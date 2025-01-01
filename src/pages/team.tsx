@@ -21,8 +21,8 @@ const Team = () => {
             />
             <Member
               name="Kwang Lee"
-              image={"/team/KwangGit.png"}
-              location="??, USA"
+              image={"/team/KwangGit.jpeg"}
+              location="USA"
               github="https://github.com/kwjolee"
               linkedin="https://www.linkedin.com/in/kwang-lee/"
               email="kwjolee@gmail.com"
