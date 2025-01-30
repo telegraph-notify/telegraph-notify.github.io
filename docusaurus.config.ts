@@ -130,6 +130,9 @@ const config: Config = {
       },
     },
   ],
+  scripts: [
+    { src: "https://unpkg.com/flowbite/dist/flowbite.min.js", async: true },
+  ],
 };
 
 export default config;

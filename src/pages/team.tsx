@@ -22,7 +22,7 @@ const Team = () => {
             <Member
               name="Kwang Lee"
               image={"/team/KwangGit.jpeg"}
-              location="USA"
+              location="Las Vegas, NV"
               github="https://github.com/kwjolee"
               linkedin="https://www.linkedin.com/in/kwang-lee/"
               email="kwjolee@gmail.com"
