@@ -1,0 +1,15 @@
+{
+  "id": "telegraph",
+  "title": "telegraph",
+  "description": "",
+  "source": "@site/docs/telegraph.md",
+  "sourceDirName": ".",
+  "slug": "/telegraph",
+  "permalink": "/docs/telegraph",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar"
+}

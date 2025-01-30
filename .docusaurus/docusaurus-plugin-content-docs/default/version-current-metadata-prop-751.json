@@ -1,0 +1,29 @@
+{
+  "pluginId": "default",
+  "version": "current",
+  "label": "Next",
+  "banner": null,
+  "badge": false,
+  "noIndex": false,
+  "className": "docs-version-current",
+  "isLast": true,
+  "docsSidebars": {
+    "tutorialSidebar": [
+      {
+        "type": "link",
+        "label": "telegraph",
+        "href": "/docs/telegraph",
+        "docId": "telegraph",
+        "unlisted": false
+      }
+    ]
+  },
+  "docs": {
+    "telegraph": {
+      "id": "telegraph",
+      "title": "telegraph",
+      "description": "",
+      "sidebar": "tutorialSidebar"
+    }
+  }
+}

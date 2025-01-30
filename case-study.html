@@ -1,157 +1,1784 @@
 <!doctype html>
-<html lang="en" dir="ltr" class="mdx-wrapper mdx-page plugin-pages plugin-id-default" data-has-hydrated="false">
-<head>
-<meta charset="UTF-8">
-<meta name="generator" content="Docusaurus v3.2.1">
-<title data-rh="true">Case Study | Telegraph</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://telegraph-notify.github.io/img/logo_mustard.png"><meta data-rh="true" name="twitter:image" content="https://telegraph-notify.github.io/img/logo_mustard.png"><meta data-rh="true" property="og:url" content="https://telegraph-notify.github.io/case-study"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Case Study | Telegraph"><meta data-rh="true" name="description" content="Telegraph Case Study"><meta data-rh="true" property="og:description" content="Telegraph Case Study"><link data-rh="true" rel="icon" href="/img/favicon32.png"><link data-rh="true" rel="canonical" href="https://telegraph-notify.github.io/case-study"><link data-rh="true" rel="alternate" href="https://telegraph-notify.github.io/case-study" hreflang="en"><link data-rh="true" rel="alternate" href="https://telegraph-notify.github.io/case-study" hreflang="x-default"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap">
-<script src="https://unpkg.com/flowbite/dist/flowbite.min.js" async></script><link rel="stylesheet" href="/assets/css/styles.8fe17f81.css">
-<script src="/assets/js/runtime~main.fe9431cd.js" defer="defer"></script>
-<script src="/assets/js/main.74c0c263.js" defer="defer"></script>
-</head>
-<body class="navigation-with-keyboard">
-<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo_mustard.png" alt="Telegraph Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo_mustard.png" alt="Telegraph Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div></a></div><div class="navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/case-study">Case Study</a><a class="navbar__item navbar__link" href="/team">Team</a><a href="https://github.com/telegraph-notify" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><main><div class="row mx-0"><div class="sidebar"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#introduction" class="table-of-contents__link toc-highlight">Introduction</a></li><li><a href="#building-notifications-is-not-trivial" class="table-of-contents__link toc-highlight">Building Notifications is Not Trivial</a></li><li><a href="#third-party-solutions" class="table-of-contents__link toc-highlight">Third-Party Solutions</a></li><li><a href="#introducing-telegraph" class="table-of-contents__link toc-highlight">Introducing Telegraph</a><ul><li><a href="#step-1-install-dependencies--deploy-telegraph-to-aws" class="table-of-contents__link toc-highlight">Step 1: Install dependencies &amp; deploy Telegraph to AWS</a></li><li><a href="#step-2-integrate-frontend-sdk" class="table-of-contents__link toc-highlight">Step 2: Integrate frontend SDK</a></li><li><a href="#step-3-send-notifications-with-the-backend-sdk" class="table-of-contents__link toc-highlight">Step 3: Send notifications with the backend SDK</a></li><li><a href="#demo" class="table-of-contents__link toc-highlight">Demo</a></li><li><a href="#architecture" class="table-of-contents__link toc-highlight">Architecture</a></li></ul></li><li><a href="#engineering-challenges-and-decisions" class="table-of-contents__link toc-highlight">Engineering Challenges and Decisions</a><ul><li><a href="#real-time-communication-with-clients" class="table-of-contents__link toc-highlight">Real-time Communication with Clients</a></li><li><a href="#persistent-data-storage" class="table-of-contents__link toc-highlight">Persistent Data Storage</a></li><li><a href="#authentication" class="table-of-contents__link toc-highlight">Authentication</a></li><li><a href="#observability" class="table-of-contents__link toc-highlight">Observability</a></li><li><a href="#traffic-spikes" class="table-of-contents__link toc-highlight">Traffic Spikes</a></li></ul></li><li><a href="#load-testing" class="table-of-contents__link toc-highlight">Load Testing</a><ul><li><a href="#websocket-gateway" class="table-of-contents__link toc-highlight">WebSocket Gateway</a></li><li><a href="#http-gateway" class="table-of-contents__link toc-highlight">HTTP Gateway</a></li><li><a href="#bottlenecks" class="table-of-contents__link toc-highlight">Bottlenecks</a></li><li><a href="#capacity" class="table-of-contents__link toc-highlight">Capacity</a></li></ul></li><li><a href="#future-work" class="table-of-contents__link toc-highlight">Future Work</a></li><li><a href="#footnotes" class="table-of-contents__link toc-highlight">Footnotes</a></li><li><a href="#references" class="table-of-contents__link toc-highlight">References</a></li></ul></div></div><div class="col max-w-9xl px-[10%] py-[5%]"><article class="m-w-4xl p-4"><div class="display mobile-toc-container"><div class="tocCollapsible_ETCw"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div></div><h1>Case Study</h1>
-<hr>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="introduction">Introduction<a href="#introduction" class="hash-link" aria-label="Direct link to Introduction" title="Direct link to Introduction">​</a></h2>
-<p>Telegraph is a self-hosted, serverless Notification as a Service (NaaS) designed to simplify the complexities of implementing and managing real-time notifications for web applications.</p>
-<figure class="image-container"><img src="/case-study/videos/overview.gif" class="diagram" alt="architectural-overview"></figure>
-<p>Notifications may seem simple on the surface. They’re just a way to keep users informed on things like a shipped package, an upcoming meeting, or a flash sale. Whenever one of these events happens, you send a message to your user. But when you start digging into what it takes to build a notification system of your own, it becomes apparent that there’s a lot more going on under the hood. It’s not just about delivering a message. How do you make sure it works without bogging down the rest of your application? How do you make sure it works for every user, every time? These challenges are not always obvious until you’re deep in the development process.</p>
-<p>This case study explores the technical foundation of Telegraph, focusing on the challenges of building a scalable and reliable notification service, the architectural trade-offs made during its development, and the benefits of adopting a serverless approach.</p>
-<hr>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="building-notifications-is-not-trivial">Building Notifications is Not Trivial<a href="#building-notifications-is-not-trivial" class="hash-link" aria-label="Direct link to Building Notifications is Not Trivial" title="Direct link to Building Notifications is Not Trivial">​</a></h2>
-<p>Notifications are messages triggered by an event within an application that are sent to subscribed users. They can be delivered over multiple notification channels, which may include: web-push, in-app, email, or Slack. The first step in building a notification system is deciding what should trigger a notification. What events matter to you or your users? From there, you need to build a logic diagram to determine if a notification should actually be sent. Maybe the user has unsubscribed from this event type, or they’ve enabled do-not-disturb. Is the event critical enough to override those settings? It’s not just a few decisions, either. Just look at Slack&#x27;s notification logic diagram – figuring out when to send a notification can quickly become a maze of decision-making.</p>
-<figure class="image-container"><img src="/case-study/images/slack-workflow.webp" class="diagram" alt="slack-workflow" width="80%"></figure>
-<p>Once you’ve decided <strong>when</strong> to notify, the next challenge is <strong>how</strong> to deliver the message. Traditional HTTP request/response cycles aren’t designed for proactively pushing data to users. If you want to send messages without waiting for users to request them, you’ll need to make some architectural changes. And that’s only the beginning.</p>
-<p>On a normal day, your app and the notification system can share infrastructure without issues. But when usage spikes -- whether it’s your app handling a flood of new users or the notification system sending out a burst of messages -- the story changes. Both systems are now competing for the same resources, and you could quickly run into capacity limits. What’s worse is that these surges tend to happen together. When your app is busiest, notifications tend to be as well. This overlap can strain your infrastructure in ways that are hard to recover from during a critical moment. So, when you add notifications, you’re also adding to your scaling concerns – and it’s something you’ll need to plan for.</p>
-<p>Finally, users expect notifications to &quot;just work,&quot; but there’s a lot that goes into making that happen. For developers, it’s not just about sending a message. It’s about making sure it actually gets delivered, keeping track of any failures, and knowing the status of each notification as it traverses through the system. What happens if something goes wrong during delivery? How do you know if the message reached its destination? These are things you’ll need to consider, and building the systems to track them adds a whole new layer of complexity. It’s easy to overlook this when you&#x27;re focused on getting messages out the door, but without it, you’re left in the dark about whether things are actually working.</p>
-<p>When you step back and think about all of this, it quickly becomes apparent that building a notification system isn’t just a quick add-on. It’s a whole project that can take a lot more time and effort than you might have expected.</p>
-<hr>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="third-party-solutions">Third-Party Solutions<a href="#third-party-solutions" class="hash-link" aria-label="Direct link to Third-Party Solutions" title="Direct link to Third-Party Solutions">​</a></h2>
-<p>The good news is that you don&#x27;t have to reinvent the wheel. There are plenty of services out there that specialize in notifications. Of course, third-party solutions come with their own set of trade-offs. You’re giving up some control over how things work, and you might be tied to their pricing model. Open-source solutions may not have a recurring fee, but they’re not entirely “free” either. The real cost comes in the time it takes to get up and running with them. You could end up spending a lot of time just trying to integrate something open-source. However, in exchange, you get a system that’s already built to handle all of the complexities mentioned above.</p>
-<p>Services like MagicBell, NotificationAPI, Novu, and Knock all bring something to the table. Knock and Novu are feature-rich, but they can be time-consuming to integrate. MagicBell and NotificationAPI are more straightforward, but their pricing starts at $100-$250/month and the free tiers come with mandatory branding. Another point of consideration is that using these services means storing user data on external systems, which may raise data privacy concerns.</p>
-<figure class="image-container"><p><img decoding="async" loading="lazy" alt="Third-party comparison table" src="/assets/images/comparison-chart-1294e78ad7b28030ef47765d0f99815c.png" width="711" height="288" class="img_ev3q">
-</p><figcaption align="center">Comparing Telegraph with other Third-party providers</figcaption><p></p></figure>
-<p>Telegraph stands out in four key areas against the existing solutions:</p>
-<ul>
-<li>Open-source and self-hosted.</li>
-<li>Auto-deployment of all required AWS services with a CLI.</li>
-<li>Complete data ownership.</li>
-<li>Minimizes costs with the on-demand features of AWS. <a href="#footnotes">[1]</a></li>
-</ul>
-<hr>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="introducing-telegraph">Introducing Telegraph<a href="#introducing-telegraph" class="hash-link" aria-label="Direct link to Introducing Telegraph" title="Direct link to Introducing Telegraph">​</a></h2>
-<p>Telegraph is built for small to mid-sized applications that need to deliver real-time notifications. For developers choosing Telegraph, the service has pre-configured delivery channels and an observability dashboard for overseeing the service instance. Developers can then implement in-app, email, and Slack notifications into their applications with minimal structural changes to their existing infrastructure.</p>
-<p>Telegraph is deployed to AWS via a CLI available as an npm package. Once deployed the backend SDK can be integrated in the customer’s backend to send notification requests and the <code>TelegraphInbox</code> React component can be added to the customer’s frontend, enabling in-app notifications and notification preference management for users.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="step-1-install-dependencies--deploy-telegraph-to-aws">Step 1: Install dependencies &amp; deploy Telegraph to AWS<a href="#step-1-install-dependencies--deploy-telegraph-to-aws" class="hash-link" aria-label="Direct link to Step 1: Install dependencies &amp; deploy Telegraph to AWS" title="Direct link to Step 1: Install dependencies &amp; deploy Telegraph to AWS">​</a></h3>
-<p><strong><em>Install Telegraph CLI</em></strong></p>
-<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">$ npm install -g @telegraph-notify/telegraph-cli</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p><strong><em>Initialize Telegraph</em></strong></p>
-<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">$ telegraph init</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p><strong><em>Deploy to AWS</em></strong></p>
-<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">$ telegraph deploy</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="step-2-integrate-frontend-sdk">Step 2: Integrate frontend SDK<a href="#step-2-integrate-frontend-sdk" class="hash-link" aria-label="Direct link to Step 2: Integrate frontend SDK" title="Direct link to Step 2: Integrate frontend SDK">​</a></h3>
-<div class="language-jsx codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-jsx codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token keyword module" style="color:rgb(189, 147, 249);font-style:italic">import</span><span class="token plain"> </span><span class="token imports punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token imports"> </span><span class="token imports maybe-class-name">TelegraphInbox</span><span class="token imports"> </span><span class="token imports punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"> </span><span class="token keyword module" style="color:rgb(189, 147, 249);font-style:italic">from</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;@telegraph-notify/frontend-sdk&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token tag punctuation" style="color:rgb(248, 248, 242)">&lt;</span><span class="token tag class-name" style="color:rgb(255, 121, 198)">App</span><span class="token tag punctuation" style="color:rgb(248, 248, 242)">&gt;</span><span class="token plain-text"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain-text">  </span><span class="token tag punctuation" style="color:rgb(248, 248, 242)">&lt;</span><span class="token tag class-name" style="color:rgb(255, 121, 198)">TelegraphInbox</span><span class="token tag" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag" style="color:rgb(255, 121, 198)">    </span><span class="token tag attr-name" style="color:rgb(241, 250, 140)">user_id</span><span class="token tag script language-javascript script-punctuation punctuation" style="color:rgb(248, 248, 242)">=</span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token tag script language-javascript tag punctuation" style="color:rgb(248, 248, 242)">&lt;</span><span class="token tag script language-javascript tag class-name" style="color:rgb(255, 121, 198)">USER_ID</span><span class="token tag script language-javascript tag punctuation" style="color:rgb(248, 248, 242)">&gt;</span><span class="token tag script language-javascript plain-text" style="color:rgb(255, 121, 198)">}</span><span class="token tag" style="color:rgb(255, 121, 198)"> </span><span class="token tag comment" style="color:rgb(98, 114, 164)">// Unique identifier of the logged in user</span><span class="token tag" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag" style="color:rgb(255, 121, 198)">    </span><span class="token tag attr-name" style="color:rgb(241, 250, 140)">userHash</span><span class="token tag script language-javascript script-punctuation punctuation" style="color:rgb(248, 248, 242)">=</span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token tag script language-javascript tag punctuation" style="color:rgb(248, 248, 242)">&lt;</span><span class="token tag script language-javascript tag class-name" style="color:rgb(255, 121, 198)">USER_HMAC</span><span class="token tag script language-javascript tag punctuation" style="color:rgb(248, 248, 242)">&gt;</span><span class="token tag script language-javascript plain-text" style="color:rgb(255, 121, 198)">}</span><span class="token tag" style="color:rgb(255, 121, 198)"> </span><span class="token tag comment" style="color:rgb(98, 114, 164)">// Hashed user_id</span><span class="token tag" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag" style="color:rgb(255, 121, 198)">    </span><span class="token tag attr-name" style="color:rgb(241, 250, 140)">websocketUrl</span><span class="token tag script language-javascript script-punctuation punctuation" style="color:rgb(248, 248, 242)">=</span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token tag script language-javascript tag punctuation" style="color:rgb(248, 248, 242)">&lt;</span><span class="token tag script language-javascript tag class-name" style="color:rgb(255, 121, 198)">WEBSOCKET_GATEWAY_URL</span><span class="token tag script language-javascript tag punctuation" style="color:rgb(248, 248, 242)">&gt;</span><span class="token tag script language-javascript plain-text" style="color:rgb(255, 121, 198)">}</span><span class="token tag" style="color:rgb(255, 121, 198)"> </span><span class="token tag comment" style="color:rgb(98, 114, 164)">// WebSocket Gateway URL</span><span class="token tag" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag" style="color:rgb(255, 121, 198)">  </span><span class="token tag punctuation" style="color:rgb(248, 248, 242)">/&gt;</span><span class="token plain-text"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain-text"></span><span class="token tag punctuation" style="color:rgb(248, 248, 242)">&lt;/</span><span class="token tag class-name" style="color:rgb(255, 121, 198)">App</span><span class="token tag punctuation" style="color:rgb(248, 248, 242)">&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="step-3-send-notifications-with-the-backend-sdk">Step 3: Send notifications with the backend SDK<a href="#step-3-send-notifications-with-the-backend-sdk" class="hash-link" aria-label="Direct link to Step 3: Send notifications with the backend SDK" title="Direct link to Step 3: Send notifications with the backend SDK">​</a></h3>
-<div class="language-typescript codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-typescript codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">import</span><span class="token plain"> Telegraph </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">from</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;@telegraph-notify/backend-sdk&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token comment" style="color:rgb(98, 114, 164)">// Enter secret key and HTTP Gateway URL</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">const</span><span class="token plain"> telegraph </span><span class="token operator">=</span><span class="token plain"> </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">new</span><span class="token plain"> </span><span class="token class-name">Telegraph</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token plain">secretKey</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> httpGateway</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">telegraph</span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token function" style="color:rgb(80, 250, 123)">send</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  user_id</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  channels</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">   in_app</span><span class="token operator">?</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      message</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">   </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">   email</span><span class="token operator">?</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      subject</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      message</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">   </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">   slack</span><span class="token operator">?</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      message</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">   </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<hr>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="demo">Demo<a href="#demo" class="hash-link" aria-label="Direct link to Demo" title="Direct link to Demo">​</a></h3>
-<p>Here is what all of that looks like in action.</p>
-<figure class="image-container"><img src="/case-study/videos/demoapp.gif" class="diagram" alt="demoapp"></figure>
-<hr>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="architecture">Architecture<a href="#architecture" class="hash-link" aria-label="Direct link to Architecture" title="Direct link to Architecture">​</a></h3>
-<p>Telegraph has a serverless architecture on AWS and uses services like API Gateway, Lambda, and DynamoDB to implement its service with minimal operational overhead.</p>
-<figure class="image-container"><img src="/case-study/images/Architecture900.png" class="diagram" alt="Telegraph&#x27;s architecture" width="63%"><figcaption align="center">Telegraph&#x27;s Architecture</figcaption></figure>
-<hr>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="engineering-challenges-and-decisions">Engineering Challenges and Decisions<a href="#engineering-challenges-and-decisions" class="hash-link" aria-label="Direct link to Engineering Challenges and Decisions" title="Direct link to Engineering Challenges and Decisions">​</a></h2>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="real-time-communication-with-clients">Real-time Communication with Clients<a href="#real-time-communication-with-clients" class="hash-link" aria-label="Direct link to Real-time Communication with Clients" title="Direct link to Real-time Communication with Clients">​</a></h3>
-<figure class="image-container"><img src="/case-study/images/architecture_ws_gateway.png" class="diagram" alt="architecture-websocket"></figure>
-<p>One of the first decisions we had to make was how to send in-app notifications to the client. In the standard HTTP model, clients request data from servers as needed. In-app notifications, however, require real-time delivery, where the server pushes data to the client as events happen without waiting for a request.</p>
-<p>There are three primary mechanisms that can be used to achieve this: polling, Server-Sent Events (SSE), and WebSockets.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="polling">Polling<a href="#polling" class="hash-link" aria-label="Direct link to Polling" title="Direct link to Polling">​</a></h4>
-<figure class="image-container"><img src="/case-study/images/HTTP-Polling.png" class="diagram" alt="polling"></figure>
-<p>Polling is a mechanism in which a client periodically sends HTTP requests to a server to check for new data. However, frequent polling can strain both the server and the network. While increasing the interval between requests can alleviate that strain, it reduces the application&#x27;s ability to deliver real-time updates. Additionally, as the user base grows, the number of unnecessary polling requests – those that return no new data – can result in a substantial waste of resources. Due to these inefficiencies, especially at scale, we opted not to use polling.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="server-sent-events--websockets">Server-Sent Events &amp; WebSockets<a href="#server-sent-events--websockets" class="hash-link" aria-label="Direct link to Server-Sent Events &amp; WebSockets" title="Direct link to Server-Sent Events &amp; WebSockets">​</a></h4>
-<p>Both SSEs and WebSockets establish a persistent connection between client and server and allow data to be pushed on-demand from the server to the client.</p>
-<figure class="image-container"><img src="/case-study/images/SSE.png" class="diagram" alt="sse"></figure>
-<p>SSEs establish a long-lived HTTP connection between the client and server, enabling the server to push updates to the client as they occur and only terminate when requested by either party. Compared with WebSockets, SSE is simpler to implement, as it relies solely on standard HTTP without requiring additional libraries or protocols. This simplicity makes it easy to set up and debug. Furthermore, SSE provides built-in features like automatic reconnection and message ordering.</p>
-<figure class="image-container"><img src="/case-study/images/WebSockets.png" class="diagram" alt="polling"></figure>
-<p>WebSocket is a communication protocol that establishes a long-lived, bidirectional connection between a client and server over a single TCP connection. Following the initial HTTP handshake, the client sends an upgrade request that transitions the connection to the WebSocket protocol. This protocol establishes a dedicated channel for two-way real-time communication, making WebSocket particularly well-suited for interactive use cases, such as real-time chat applications or collaborative tools.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="why-websockets">Why WebSockets?<a href="#why-websockets" class="hash-link" aria-label="Direct link to Why WebSockets?" title="Direct link to Why WebSockets?">​</a></h4>
-<p>We initially used SSEs to implement the sending of in-app notifications. The browser received these events from an Express backend server and then updated a user-facing frontend component to notify the user of this new event. This mechanism fulfilled our requirement to send in-app notifications in real-time. However, when we considered the scaling implications of using SSEs, and compared this with a serverless WebSocket architecture, we found WebSockets would serve Telegraph’s use case better in the long term, particularly when considering the availability of AWS API Gateway for WebSockets.</p>
-<figure class="image-container"><img src="/case-study/videos/ScalingEC2.gif" class="diagram" alt="scaling-instances"></figure>
-<p>If we were to continue building Telegraph as a drop-in Notification as a Service using SSEs, we would have needed to set up an EC2 instance or similar compute resources. While this solution provides fine-grained control over scaling logic, connection management, and database infrastructure, we found it to lead to higher costs and complexity. For example, scaling an EC2-based setup would involve managing load balancers and provisioning distributed database systems or sharded architectures to handle the growth in notification data. These resources will incur costs even when idle. We estimated that in a hypothetical use case of delivering 100,000 notifications for 2,000 users, the monthly cost of the serverless architecture was about 1/3 of that of using EC2 instances.</p>
-<p>In addition to architectural components needing to scale up, as traffic drops and the number of connections reduces, they also need to scale down while maintaining the remaining connections. Although a single EC2 instance may be able to service all active SSE connections, we would not be able to consolidate the scattered connections without disconnecting them first. This would result in multiple EC2 instances running in underutilized states.</p>
-<figure class="image-container"><img src="/case-study/videos/ScalingWS.gif" class="diagram" alt="scaling-websockets"></figure>
-<p>In contrast, AWS’s API Gateway Websocket API automatically handles scaling and connection persistence. The API Gateway and the attached lambdas scale up and down with demand, ensuring no redundant resources are left running that would drive up costs. This built-in scaling behavior of the API Gateway allowed us to focus on building the core functionality of Telegraph while minimizing the operational burden of managing infrastructure, making WebSockets the better choice for our notification system.</p>
-<hr>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="persistent-data-storage">Persistent Data Storage<a href="#persistent-data-storage" class="hash-link" aria-label="Direct link to Persistent Data Storage" title="Direct link to Persistent Data Storage">​</a></h3>
-<figure class="image-container"><img src="/case-study/images/architecture_databases.png" class="diagram" alt="websockets"></figure>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="storage-for-high-reads-and-writes">Storage for high reads and writes<a href="#storage-for-high-reads-and-writes" class="hash-link" aria-label="Direct link to Storage for high reads and writes" title="Direct link to Storage for high reads and writes">​</a></h4>
-<p>Our data for WebSocket connection IDs, user preferences and attributes, and in-app notifications has a fixed and consistent structure. It also does not require complex relational queries, primarily involving simple look-ups based on user ID. However, the nature of our workflow meant that the database solution needed to handle a high frequency of both reads and writes.</p>
-<p>By this point, we had already committed to using the WebSocket API Gateway, which influenced the rest of our architecture. As a result, we considered database services offered by AWS that could integrate with our serverless infrastructure. Although we could potentially use either NoSQL or SQL databases since our data is structured, we ultimately chose a NoSQL database, specifically DynamoDB, due to its ability to scale horizontally and handle high read and write throughput.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="storage-for-high-writes-and-large-volume">Storage for high writes and large volume<a href="#storage-for-high-writes-and-large-volume" class="hash-link" aria-label="Direct link to Storage for high writes and large volume" title="Direct link to Storage for high writes and large volume">​</a></h4>
-<p>Another type of storage solution we needed to consider was for the tracing logs of notification requests. This storage solution would need to handle a high volume of writes and store a large number of small files.</p>
-<p>Initially, when considering storage for logs, Amazon’s S3 bucket seemed like the best choice. S3 is a scalable object storage solution known for being particularly cost-effective for storing large amounts of data. However, after implementation, we quickly found that the number of reads to the S3 Bucket would be significant and, with about a 10x difference in read costs compared to DynamoDB, it could quickly become an expensive solution. We also found the query time of S3 to be a significant concern for our use case, as retrieving 20 objects, each about 30 bytes, resulted in a timeout due to Lambda&#x27;s default 3-second execution limit.</p>
-<p>Given that we needed to query the logs database for viewing and error handling on the dashboard, the lag in retrievals and the cost difference for reads outweighed the cheap storage benefits of S3. As a result, we opted to use DynamoDB for our notification logs.</p>
-<p>Once our data was stored away, it was time to keep it safe.</p>
-<hr>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="authentication">Authentication<a href="#authentication" class="hash-link" aria-label="Direct link to Authentication" title="Direct link to Authentication">​</a></h3>
-<figure class="image-container"><img src="/case-study/images/architecture_authorizers.png" class="diagram" alt="authorizors"></figure>
-<p>Telegraph uses two authentication methods: key-based authentication for server-side connections and Hash-Based Message Authentication Codes (HMAC) for client-side connections.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="key-based-authentication">Key-based Authentication<a href="#key-based-authentication" class="hash-link" aria-label="Direct link to Key-based Authentication" title="Direct link to Key-based Authentication">​</a></h4>
-<figure class="image-container"><img src="/case-study/videos/Key-Based-Authentication.gif" class="diagram" alt="key based authentication"></figure>
-<p>Telegraph uses key-based authentication for API requests. During setup, users generate a secret key, which is included in the <code>Authorization</code> header of each request and then verified by the HTTP Gateway authorizer.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="hash-based-authentication">Hash-based Authentication<a href="#hash-based-authentication" class="hash-link" aria-label="Direct link to Hash-based Authentication" title="Direct link to Hash-based Authentication">​</a></h4>
-<figure class="image-container"><img src="/case-study/videos/HMAC-Authentication.gif" class="diagram" alt="key based authentication"></figure>
-<p>Authenticating a client between two servers with a shared secret key is more challenging, since the credentials in the Authorization header are visible to the client. If the secret key is intercepted by a third party, they gain access to all Telegraph API functions.</p>
-<p>Our solution uses hash-based message authentication codes (HMAC) <a href="#references">[3]</a> to authenticate clients connecting to the WebSocket Gateway. The application server generates a unique hash for each client by combining the secret key and user ID using SHA256. When connecting to the WebSocket Gateway, the user ID and hash are passed to the WebSocket authorizer, which verifies it using the same algorithm as the application server.</p>
-<p>You might be wondering why we didn’t use JWTs or OAuth. After all, they’re widely adopted across the industry for authentication. The choice came down to what Telegraph is optimized for. HMAC avoids the need for additional infrastructure like token servers or complex validation workflows. You only have to manage a shared secret key.</p>
-<p>JWTs and OAuth are powerful tools, but they’re designed for different needs. JWTs are great in distributed systems where multiple services need to independently validate tokens without checking back with a central server. That flexibility is great if you need it, but it adds unnecessary complexity for Telegraph’s needs. OAuth, on the other hand, is great for scenarios involving delegated access, like when users need to log in through a third-party provider. However, we designed Telegraph to be a single-tenant, self-hosted environment where your server already authenticates clients before Telegraph comes into the picture.</p>
-<p>That said, we did recognize that the secret key used in the HMAC process doesn’t have a native expiration or rotation mechanism. We added a way for you to change the secret key whenever needed through the CLI – whether it’s in response to a security breach or simply because the key has been in use for a while and you want to rotate it out.</p>
-<hr>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="observability">Observability<a href="#observability" class="hash-link" aria-label="Direct link to Observability" title="Direct link to Observability">​</a></h3>
-<p>An integral part of our system is giving developers visibility into whether notifications are being delivered successfully and providing a way to debug failures when they happen. Telegraph enables detailed logging across all Lambda functions and gateways using AWS CloudWatch. Though thorough, the sheer volume of logs generated can make diagnosing issues with CloudWatch logs alone difficult.</p>
-<p>Our dashboard is meant to act as a bridge between visualizing your Telegraph instance and diagnosing problems using CloudWatch logs. It provides a quicker, more user-friendly way to interpret metrics, logs, and failed messages. Developers can use the notification logs generated for a notification request to narrow their search of CloudWatch logs and resolve problems faster.</p>
-<figure class="image-container"><img src="/case-study/videos/dashboard.gif" class="diagram" alt="dashboard"></figure>
-<hr>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="traffic-spikes">Traffic Spikes<a href="#traffic-spikes" class="hash-link" aria-label="Direct link to Traffic Spikes" title="Direct link to Traffic Spikes">​</a></h3>
-<figure class="image-container"><img src="/case-study/images/architecture_queue.png" class="diagram" alt="architecture-queue"></figure>
-<p>Handling traffic spikes is one of the tricky parts of building a notification system. Even though AWS Lambda scales automatically, there are concurrency limits, and DynamoDB, while it auto-scales, has its own read and write rate limits. We wanted to make sure Telegraph could handle sudden surges in traffic without hitting those limits and causing issues. To manage this, we added a queue to rate limit the traffic flowing through the system.</p>
-<p>AWS offers two types of queues: FIFO and Standard <a href="#references">[4]</a>. A FIFO queue, as the name suggests, processes messages in the exact order they are received. This seemed like a nice feature, but it was not strictly necessary for our use case. The downside of a FIFO queue is that it has a throughput limit of 300 requests per second. Also, to preserve the ordering of the messages, if there is an error processing a batch, all unprocessed messages have to go back to the queue. Since the queue uses the number of times a message appears in the queue as its criteria for sending that message to the dead letter queue (DLQ), this meant that it was possible for a message to be sent to the DLQ without ever being attempted to be processed.</p>
-<p>A Standard queue forgoes enforcing FIFO behavior and is instead optimized for high message throughput, which Amazon states is unlimited. Without the strict first-in-first-out ordering rules, this meant we could process a batch of messages returning only the failed messages to the queue and eliminate the risk of a valid message being inadvertently sent to the DLQ. With these cumulative benefits, we decided to choose the Standard queue.</p>
-<p>To then use the queue as a rate limiter in our system, we configured the Lambda consuming from it. The Lambda takes up to 100 messages from the queue with a concurrency limit of 10, creating a ceiling on the number of notification requests that are processed at a given time. Buffering requests and processing them asynchronously allows us to keep downstream components from being overloaded during spikes in traffic.</p>
-<hr>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="load-testing">Load Testing<a href="#load-testing" class="hash-link" aria-label="Direct link to Load Testing" title="Direct link to Load Testing">​</a></h2>
-<p>To ensure that Telegraph could handle high traffic scenarios and scale effectively, we conducted load testing on the key entry points of the application: the WebSocket Gateway and the HTTP Gateway. The objective of the testing was to evaluate our capacity under heavy loads, focusing on whether the connection requests would be successfully passed on to the integrated lambdas. We simulated a high volume of simultaneous users and interactions using <code>artillery.io</code> and a high capacity EC2 instance (32 vCPU, 128 GiB memory).</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="websocket-gateway">WebSocket Gateway<a href="#websocket-gateway" class="hash-link" aria-label="Direct link to WebSocket Gateway" title="Direct link to WebSocket Gateway">​</a></h3>
-<p>The WebSocket Gateway was tested to evaluate how it handles a high volume of connections. We started with a low connection rate to establish a baseline and gradually increased the load. Throughout the tests, latency remained consistent, and we didn’t encounter any errors. This confirmed that the WebSocket Gateway can handle up to 500 new connections per second, aligning with AWS&#x27;s specifications. <a href="#references">[1]</a></p>
-<table><thead><tr><th>Metric</th><th>Test 1</th><th>Test 2</th><th>Test 3</th></tr></thead><tbody><tr><td>Test Duration</td><td>20</td><td>20</td><td>600</td></tr><tr><td>Maximum connections per second</td><td>10</td><td>200</td><td>500</td></tr><tr><td>Total Connections</td><td>200</td><td>1239</td><td>291126</td></tr><tr><td>Latency (ms)</td><td>38</td><td>26</td><td>21</td></tr><tr><td>Errors</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="http-gateway">HTTP Gateway<a href="#http-gateway" class="hash-link" aria-label="Direct link to HTTP Gateway" title="Direct link to HTTP Gateway">​</a></h3>
-<p>For the HTTP Gateway, the focus was on API request handling. At light and moderate request rates, the system was able to process all requests. However, at a heavy load of 8,000 requests per second, we hit the AWS Lambda&#x27;s regional concurrency limit of 1,000 <a href="#references">[2]</a>. This caused about 1.6% of requests to be throttled, as there weren’t enough Lambdas available to process them. Despite this, the requests that were processed maintained stable latency, and no errors occurred.</p>
-<table><thead><tr><th>Metric</th><th>Test 1</th><th>Test 2</th><th>Test 3</th></tr></thead><tbody><tr><td>Test Duration (seconds)</td><td>30</td><td>60</td><td>60</td></tr><tr><td>API Requests per second</td><td>5</td><td>100</td><td>8000</td></tr><tr><td>Total Requests Made</td><td>150</td><td>6000</td><td>480000</td></tr><tr><td>Throttled Requests</td><td>0</td><td>0</td><td>7854</td></tr><tr><td>Latency (ms)</td><td>156</td><td>44</td><td>78</td></tr><tr><td>Errors</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="bottlenecks">Bottlenecks<a href="#bottlenecks" class="hash-link" aria-label="Direct link to Bottlenecks" title="Direct link to Bottlenecks">​</a></h3>
-<p>The main performance bottleneck for Telegraph was the Lambda concurrency limit. While components like API Gateway and DynamoDB scaled well during load tests, Lambda’s default concurrency cap of 1,000 executions per region imposed by AWS became a limiting factor. This limit wasn’t reached during the WebSocket Gateway tests, but when the HTTP Gateway test ramped up to 8,000 requests per second, throttling began as all 1,000 Lambdas were already in use.</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="capacity">Capacity<a href="#capacity" class="hash-link" aria-label="Direct link to Capacity" title="Direct link to Capacity">​</a></h3>
-<p>Based on our results, we estimate that this bottleneck can be avoided if WebSocket connections are kept under 500 per second and API requests stay below 5,000 per second. These limits align well with our target use case of serving small to medium-sized applications. Moreover, AWS’s flexible concurrency limits offer an additional buffer, allowing Telegraph to scale even further if needed.</p>
-<hr>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="future-work">Future Work<a href="#future-work" class="hash-link" aria-label="Direct link to Future Work" title="Direct link to Future Work">​</a></h2>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="automated-key-rotation-for-hmac-authentication">Automated Key Rotation for HMAC Authentication<a href="#automated-key-rotation-for-hmac-authentication" class="hash-link" aria-label="Direct link to Automated Key Rotation for HMAC Authentication" title="Direct link to Automated Key Rotation for HMAC Authentication">​</a></h4>
-<p>Our HMAC-based authentication approach, while robust, currently has two notable limitations: the lack of expiration and the absence of automated secret key rotation. Automating secret key rotation using a secure key management system like AWS Key Management Service would mitigate risks by periodically updating keys.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="stage-specific-metrics">Stage-Specific Metrics<a href="#stage-specific-metrics" class="hash-link" aria-label="Direct link to Stage-Specific Metrics" title="Direct link to Stage-Specific Metrics">​</a></h4>
-<p>To improve the observability metrics of our dashboard, we could enhance its granularity by providing detailed insights into each stage of the notification delivery pipeline. Currently, the dashboard displays notification logs, their status, and timestamps, but it lacks visibility into where failures occur within the process. By incorporating stage-specific metrics, such as whether the notification failed during API processing, message queueing, or client delivery, we can offer a more precise diagnosis for failures. Additionally, integrating visualizations like success/failure rates, retry attempts, and latency distributions across stages would enable users to understand performance bottlenecks better and identify trends. These improvements would enable users to troubleshoot issues more effectively and optimize their notification workflows.</p>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="automating-retry-logic-for-failed-deliveries">Automating Retry Logic for Failed Deliveries<a href="#automating-retry-logic-for-failed-deliveries" class="hash-link" aria-label="Direct link to Automating Retry Logic for Failed Deliveries" title="Direct link to Automating Retry Logic for Failed Deliveries">​</a></h4>
-<p>Currently, the system lacks built-in retry logic for failed notification deliveries. While failed deliveries are logged and displayed on the dashboard, any reattempt to send these notifications must be done manually. Introducing automated retry logic to attempt delivery two or three times before marking a notification as failed could reduce the likelihood of prematurely abandoning notifications.</p>
-<hr>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="footnotes">Footnotes<a href="#footnotes" class="hash-link" aria-label="Direct link to Footnotes" title="Direct link to Footnotes">​</a></h2>
-<ol>
-<li>Under typical AWS usage scenarios, delivering 10,000 notifications with Telegraph incurs an estimated monthly cost of $14</li>
-</ol>
-<hr>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="references">References<a href="#references" class="hash-link" aria-label="Direct link to References" title="Direct link to References">​</a></h2>
-<ol>
-<li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html" target="_blank" rel="noopener noreferrer">https://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html</a></li>
-<li><a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-concurrency.html" target="_blank" rel="noopener noreferrer">https://docs.aws.amazon.com/lambda/latest/dg/lambda-concurrency.html</a></li>
-<li><a href="https://en.wikipedia.org/wiki/HMAC" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/HMAC</a></li>
-<li><a href="https://aws.amazon.com/sqs" target="_blank" rel="noopener noreferrer">https://aws.amazon.com/sqs</a></li>
-</ol></article></div></div></main></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/case-study">Case Study</a></li><li class="footer__item"><a class="footer__link-item" href="/team">Team</a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/telegraph-notify" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Telegraph</div></div></div></footer></div>
-</body>
+<html
+  lang="en"
+  dir="ltr"
+  class="mdx-wrapper mdx-page plugin-pages plugin-id-default"
+  data-has-hydrated="false"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="generator" content="Docusaurus v3.2.1" />
+    <title data-rh="true">Case Study | Telegraph</title>
+    <meta
+      data-rh="true"
+      name="viewport"
+      content="width=device-width,initial-scale=1"
+    />
+    <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+    <meta
+      data-rh="true"
+      property="og:image"
+      content="https://telegraph-notify.github.io/img/logo_mustard.png"
+    />
+    <meta
+      data-rh="true"
+      name="twitter:image"
+      content="https://telegraph-notify.github.io/img/logo_mustard.png"
+    />
+    <meta
+      data-rh="true"
+      property="og:url"
+      content="https://telegraph-notify.github.io/case-study"
+    />
+    <meta data-rh="true" property="og:locale" content="en" />
+    <meta data-rh="true" name="docusaurus_locale" content="en" />
+    <meta data-rh="true" name="docusaurus_tag" content="default" />
+    <meta data-rh="true" name="docsearch:language" content="en" />
+    <meta data-rh="true" name="docsearch:docusaurus_tag" content="default" />
+    <meta data-rh="true" property="og:title" content="Case Study | Telegraph" />
+    <meta data-rh="true" name="description" content="Telegraph Case Study" />
+    <meta
+      data-rh="true"
+      property="og:description"
+      content="Telegraph Case Study"
+    />
+    <link data-rh="true" rel="icon" href="/img/favicon32.png" />
+    <link
+      data-rh="true"
+      rel="canonical"
+      href="https://telegraph-notify.github.io/case-study"
+    />
+    <link
+      data-rh="true"
+      rel="alternate"
+      href="https://telegraph-notify.github.io/case-study"
+      hreflang="en"
+    />
+    <link
+      data-rh="true"
+      rel="alternate"
+      href="https://telegraph-notify.github.io/case-study"
+      hreflang="x-default"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap"
+    />
+    <script
+      src="https://unpkg.com/flowbite/dist/flowbite.min.js"
+      async
+    ></script>
+    <link rel="stylesheet" href="/assets/css/styles.8fe17f81.css" />
+    <script src="/assets/js/runtime~main.fe9431cd.js" defer="defer"></script>
+    <script src="/assets/js/main.74c0c263.js" defer="defer"></script>
+  </head>
+  <body class="navigation-with-keyboard">
+    <script>
+      !(function () {
+        function t(t) {
+          document.documentElement.setAttribute("data-theme", t);
+        }
+        var e =
+          (function () {
+            try {
+              return new URLSearchParams(window.location.search).get(
+                "docusaurus-theme"
+              );
+            } catch (t) {}
+          })() ||
+          (function () {
+            try {
+              return localStorage.getItem("theme");
+            } catch (t) {}
+          })();
+        t(null !== e ? e : "light");
+      })(),
+        (function () {
+          try {
+            const c = new URLSearchParams(window.location.search).entries();
+            for (var [t, e] of c)
+              if (t.startsWith("docusaurus-data-")) {
+                var a = t.replace("docusaurus-data-", "data-");
+                document.documentElement.setAttribute(a, e);
+              }
+          } catch (t) {}
+        })();
+    </script>
+    <div id="__docusaurus">
+      <div role="region" aria-label="Skip to main content">
+        <a
+          class="skipToContent_fXgn"
+          href="#__docusaurus_skipToContent_fallback"
+          >Skip to main content</a
+        >
+      </div>
+      <nav aria-label="Main" class="navbar navbar--fixed-top">
+        <div class="navbar__inner">
+          <div class="navbar__items">
+            <button
+              aria-label="Toggle navigation bar"
+              aria-expanded="false"
+              class="navbar__toggle clean-btn"
+              type="button"
+            >
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 30 30"
+                aria-hidden="true"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-miterlimit="10"
+                  stroke-width="2"
+                  d="M4 7h22M4 15h22M4 23h22"
+                ></path>
+              </svg></button
+            ><a class="navbar__brand" href="/"
+              ><div class="navbar__logo">
+                <img
+                  src="/img/logo_mustard.png"
+                  alt="Telegraph Logo"
+                  class="themedComponent_mlkZ themedComponent--light_NVdE"
+                /><img
+                  src="/img/logo_mustard.png"
+                  alt="Telegraph Logo"
+                  class="themedComponent_mlkZ themedComponent--dark_xIcU"
+                /></div
+            ></a>
+          </div>
+          <div class="navbar__items navbar__items--right">
+            <a
+              aria-current="page"
+              class="navbar__item navbar__link navbar__link--active"
+              href="/case-study"
+              >Case Study</a
+            ><a class="navbar__item navbar__link" href="/team">Team</a
+            ><a
+              href="https://github.com/telegraph-notify"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="navbar__item navbar__link"
+              >GitHub<svg
+                width="13.5"
+                height="13.5"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                class="iconExternalLink_nPIU"
+              >
+                <path
+                  fill="currentColor"
+                  d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"
+                ></path></svg
+            ></a>
+            <div class="navbarSearchContainer_Bca1"></div>
+          </div>
+        </div>
+        <div role="presentation" class="navbar-sidebar__backdrop"></div>
+      </nav>
+      <div
+        id="__docusaurus_skipToContent_fallback"
+        class="main-wrapper mainWrapper_z2l0"
+      >
+        <main>
+          <div class="row mx-0">
+            <div class="sidebar">
+              <div class="tableOfContents_bqdL thin-scrollbar">
+                <ul class="table-of-contents table-of-contents__left-border">
+                  <li>
+                    <a
+                      href="#introduction"
+                      class="table-of-contents__link toc-highlight"
+                      >Introduction</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#building-notifications-is-not-trivial"
+                      class="table-of-contents__link toc-highlight"
+                      >Building Notifications is Not Trivial</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#third-party-solutions"
+                      class="table-of-contents__link toc-highlight"
+                      >Third-Party Solutions</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#introducing-telegraph"
+                      class="table-of-contents__link toc-highlight"
+                      >Introducing Telegraph</a
+                    >
+                    <ul>
+                      <li>
+                        <a
+                          href="#step-1-install-dependencies--deploy-telegraph-to-aws"
+                          class="table-of-contents__link toc-highlight"
+                          >Step 1: Install dependencies &amp; deploy Telegraph
+                          to AWS</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#step-2-integrate-frontend-sdk"
+                          class="table-of-contents__link toc-highlight"
+                          >Step 2: Integrate frontend SDK</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#step-3-send-notifications-with-the-backend-sdk"
+                          class="table-of-contents__link toc-highlight"
+                          >Step 3: Send notifications with the backend SDK</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#demo"
+                          class="table-of-contents__link toc-highlight"
+                          >Demo</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#architecture"
+                          class="table-of-contents__link toc-highlight"
+                          >Architecture</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a
+                      href="#engineering-challenges-and-decisions"
+                      class="table-of-contents__link toc-highlight"
+                      >Engineering Challenges and Decisions</a
+                    >
+                    <ul>
+                      <li>
+                        <a
+                          href="#real-time-communication-with-clients"
+                          class="table-of-contents__link toc-highlight"
+                          >Real-time Communication with Clients</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#persistent-data-storage"
+                          class="table-of-contents__link toc-highlight"
+                          >Persistent Data Storage</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#authentication"
+                          class="table-of-contents__link toc-highlight"
+                          >Authentication</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#observability"
+                          class="table-of-contents__link toc-highlight"
+                          >Observability</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#traffic-spikes"
+                          class="table-of-contents__link toc-highlight"
+                          >Traffic Spikes</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a
+                      href="#load-testing"
+                      class="table-of-contents__link toc-highlight"
+                      >Load Testing</a
+                    >
+                    <ul>
+                      <li>
+                        <a
+                          href="#websocket-gateway"
+                          class="table-of-contents__link toc-highlight"
+                          >WebSocket Gateway</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#http-gateway"
+                          class="table-of-contents__link toc-highlight"
+                          >HTTP Gateway</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#bottlenecks"
+                          class="table-of-contents__link toc-highlight"
+                          >Bottlenecks</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#capacity"
+                          class="table-of-contents__link toc-highlight"
+                          >Capacity</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a
+                      href="#future-work"
+                      class="table-of-contents__link toc-highlight"
+                      >Future Work</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#footnotes"
+                      class="table-of-contents__link toc-highlight"
+                      >Footnotes</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#references"
+                      class="table-of-contents__link toc-highlight"
+                      >References</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col max-w-9xl px-[10%] py-[5%]">
+              <article class="m-w-4xl p-4">
+                <div class="display mobile-toc-container">
+                  <div class="tocCollapsible_ETCw">
+                    <button
+                      type="button"
+                      class="clean-btn tocCollapsibleButton_TO0P"
+                    >
+                      On this page
+                    </button>
+                  </div>
+                </div>
+                <h1>Case Study</h1>
+                <hr />
+                <h2
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="introduction"
+                >
+                  Introduction<a
+                    href="#introduction"
+                    class="hash-link"
+                    aria-label="Direct link to Introduction"
+                    title="Direct link to Introduction"
+                    >​</a
+                  >
+                </h2>
+                <p>
+                  Telegraph is a self-hosted, serverless Notification as a
+                  Service (NaaS) designed to simplify the complexities of
+                  implementing and managing real-time notifications for web
+                  applications.
+                </p>
+                <figure class="image-container">
+                  <img
+                    src="/case-study/videos/overview.gif"
+                    class="diagram"
+                    alt="architectural-overview"
+                  />
+                </figure>
+                <p>
+                  Notifications may seem simple on the surface. They’re just a
+                  way to keep users informed on things like a shipped package,
+                  an upcoming meeting, or a flash sale. Whenever one of these
+                  events happens, you send a message to your user. But when you
+                  start digging into what it takes to build a notification
+                  system of your own, it becomes apparent that there’s a lot
+                  more going on under the hood. It’s not just about delivering a
+                  message. How do you make sure it works without bogging down
+                  the rest of your application? How do you make sure it works
+                  for every user, every time? These challenges are not always
+                  obvious until you’re deep in the development process.
+                </p>
+                <p>
+                  This case study explores the technical foundation of
+                  Telegraph, focusing on the challenges of building a scalable
+                  and reliable notification service, the architectural
+                  trade-offs made during its development, and the benefits of
+                  adopting a serverless approach.
+                </p>
+                <hr />
+                <h2
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="building-notifications-is-not-trivial"
+                >
+                  Building Notifications is Not Trivial<a
+                    href="#building-notifications-is-not-trivial"
+                    class="hash-link"
+                    aria-label="Direct link to Building Notifications is Not Trivial"
+                    title="Direct link to Building Notifications is Not Trivial"
+                    >​</a
+                  >
+                </h2>
+                <p>
+                  Notifications are messages triggered by an event within an
+                  application that are sent to subscribed users. They can be
+                  delivered over multiple notification channels, which may
+                  include: web-push, in-app, email, or Slack. The first step in
+                  building a notification system is deciding what should trigger
+                  a notification. What events matter to you or your users? From
+                  there, you need to build a logic diagram to determine if a
+                  notification should actually be sent. Maybe the user has
+                  unsubscribed from this event type, or they’ve enabled
+                  do-not-disturb. Is the event critical enough to override those
+                  settings? It’s not just a few decisions, either. Just look at
+                  Slack&#x27;s notification logic diagram – figuring out when to
+                  send a notification can quickly become a maze of
+                  decision-making.
+                </p>
+                <figure class="image-container">
+                  <img
+                    src="/case-study/images/slack-workflow.webp"
+                    class="diagram"
+                    alt="slack-workflow"
+                    width="80%"
+                  />
+                </figure>
+                <p>
+                  Once you’ve decided <strong>when</strong> to notify, the next
+                  challenge is <strong>how</strong> to deliver the message.
+                  Traditional HTTP request/response cycles aren’t designed for
+                  proactively pushing data to users. If you want to send
+                  messages without waiting for users to request them, you’ll
+                  need to make some architectural changes. And that’s only the
+                  beginning.
+                </p>
+                <p>
+                  On a normal day, your app and the notification system can
+                  share infrastructure without issues. But when usage spikes --
+                  whether it’s your app handling a flood of new users or the
+                  notification system sending out a burst of messages -- the
+                  story changes. Both systems are now competing for the same
+                  resources, and you could quickly run into capacity limits.
+                  What’s worse is that these surges tend to happen together.
+                  When your app is busiest, notifications tend to be as well.
+                  This overlap can strain your infrastructure in ways that are
+                  hard to recover from during a critical moment. So, when you
+                  add notifications, you’re also adding to your scaling concerns
+                  – and it’s something you’ll need to plan for.
+                </p>
+                <p>
+                  Finally, users expect notifications to &quot;just work,&quot;
+                  but there’s a lot that goes into making that happen. For
+                  developers, it’s not just about sending a message. It’s about
+                  making sure it actually gets delivered, keeping track of any
+                  failures, and knowing the status of each notification as it
+                  traverses through the system. What happens if something goes
+                  wrong during delivery? How do you know if the message reached
+                  its destination? These are things you’ll need to consider, and
+                  building the systems to track them adds a whole new layer of
+                  complexity. It’s easy to overlook this when you&#x27;re
+                  focused on getting messages out the door, but without it,
+                  you’re left in the dark about whether things are actually
+                  working.
+                </p>
+                <p>
+                  When you step back and think about all of this, it quickly
+                  becomes apparent that building a notification system isn’t
+                  just a quick add-on. It’s a whole project that can take a lot
+                  more time and effort than you might have expected.
+                </p>
+                <hr />
+                <h2
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="third-party-solutions"
+                >
+                  Third-Party Solutions<a
+                    href="#third-party-solutions"
+                    class="hash-link"
+                    aria-label="Direct link to Third-Party Solutions"
+                    title="Direct link to Third-Party Solutions"
+                    >​</a
+                  >
+                </h2>
+                <p>
+                  The good news is that you don&#x27;t have to reinvent the
+                  wheel. There are plenty of services out there that specialize
+                  in notifications. Of course, third-party solutions come with
+                  their own set of trade-offs. You’re giving up some control
+                  over how things work, and you might be tied to their pricing
+                  model. Open-source solutions may not have a recurring fee, but
+                  they’re not entirely “free” either. The real cost comes in the
+                  time it takes to get up and running with them. You could end
+                  up spending a lot of time just trying to integrate something
+                  open-source. However, in exchange, you get a system that’s
+                  already built to handle all of the complexities mentioned
+                  above.
+                </p>
+                <p>
+                  Services like MagicBell, NotificationAPI, Novu, and Knock all
+                  bring something to the table. Knock and Novu are feature-rich,
+                  but they can be time-consuming to integrate. MagicBell and
+                  NotificationAPI are more straightforward, but their pricing
+                  starts at $100-$250/month and the free tiers come with
+                  mandatory branding. Another point of consideration is that
+                  using these services means storing user data on external
+                  systems, which may raise data privacy concerns.
+                </p>
+                <figure class="image-container">
+                  <p>
+                    <img
+                      decoding="async"
+                      loading="lazy"
+                      alt="Third-party comparison table"
+                      src="/assets/images/comparison-chart-1294e78ad7b28030ef47765d0f99815c.png"
+                      width="711"
+                      height="288"
+                      class="img_ev3q"
+                    />
+                  </p>
+                  <figcaption align="center">
+                    Comparing Telegraph with other Third-party providers
+                  </figcaption>
+                  <p></p>
+                </figure>
+                <p>
+                  Telegraph stands out in four key areas against the existing
+                  solutions:
+                </p>
+                <ul>
+                  <li>Open-source and self-hosted.</li>
+                  <li>
+                    Auto-deployment of all required AWS services with a CLI.
+                  </li>
+                  <li>Complete data ownership.</li>
+                  <li>
+                    Minimizes costs with the on-demand features of AWS.
+                    <a href="#footnotes">[1]</a>
+                  </li>
+                </ul>
+                <hr />
+                <h2
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="introducing-telegraph"
+                >
+                  Introducing Telegraph<a
+                    href="#introducing-telegraph"
+                    class="hash-link"
+                    aria-label="Direct link to Introducing Telegraph"
+                    title="Direct link to Introducing Telegraph"
+                    >​</a
+                  >
+                </h2>
+                <p>
+                  Telegraph is built for small to mid-sized applications that
+                  need to deliver real-time notifications. For developers
+                  choosing Telegraph, the service has pre-configured delivery
+                  channels and an observability dashboard for overseeing the
+                  service instance. Developers can then implement in-app, email,
+                  and Slack notifications into their applications with minimal
+                  structural changes to their existing infrastructure.
+                </p>
+                <p>
+                  Telegraph is deployed to AWS via a CLI available as an npm
+                  package. Once deployed the backend SDK can be integrated in
+                  the customer’s backend to send notification requests and the
+                  <code>TelegraphInbox</code> React component can be added to
+                  the customer’s frontend, enabling in-app notifications and
+                  notification preference management for users.
+                </p>
+                <h3
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="step-1-install-dependencies--deploy-telegraph-to-aws"
+                >
+                  Step 1: Install dependencies &amp; deploy Telegraph to AWS<a
+                    href="#step-1-install-dependencies--deploy-telegraph-to-aws"
+                    class="hash-link"
+                    aria-label="Direct link to Step 1: Install dependencies &amp; deploy Telegraph to AWS"
+                    title="Direct link to Step 1: Install dependencies &amp; deploy Telegraph to AWS"
+                    >​</a
+                  >
+                </h3>
+                <p>
+                  <strong><em>Install Telegraph CLI</em></strong>
+                </p>
+                <div
+                  class="codeBlockContainer_Ckt0 theme-code-block"
+                  style="
+                    --prism-color: #f8f8f2;
+                    --prism-background-color: #282a36;
+                  "
+                >
+                  <div class="codeBlockContent_biex">
+                    <pre
+                      tabindex="0"
+                      class="prism-code language-text codeBlock_bY9V thin-scrollbar"
+                      style="color: #f8f8f2; background-color: #282a36"
+                    ><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">$ npm install -g @telegraph-notify/telegraph-cli</span><br></span></code></pre>
+                    <div class="buttonGroup__atx">
+                      <button
+                        type="button"
+                        aria-label="Copy code to clipboard"
+                        title="Copy"
+                        class="clean-btn"
+                      >
+                        <span class="copyButtonIcons_eSgA" aria-hidden="true"
+                          ><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N">
+                            <path
+                              fill="currentColor"
+                              d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"
+                            ></path></svg
+                          ><svg
+                            viewBox="0 0 24 24"
+                            class="copyButtonSuccessIcon_LjdS"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"
+                            ></path></svg
+                        ></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <p>
+                  <strong><em>Initialize Telegraph</em></strong>
+                </p>
+                <div
+                  class="codeBlockContainer_Ckt0 theme-code-block"
+                  style="
+                    --prism-color: #f8f8f2;
+                    --prism-background-color: #282a36;
+                  "
+                >
+                  <div class="codeBlockContent_biex">
+                    <pre
+                      tabindex="0"
+                      class="prism-code language-text codeBlock_bY9V thin-scrollbar"
+                      style="color: #f8f8f2; background-color: #282a36"
+                    ><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">$ telegraph init</span><br></span></code></pre>
+                    <div class="buttonGroup__atx">
+                      <button
+                        type="button"
+                        aria-label="Copy code to clipboard"
+                        title="Copy"
+                        class="clean-btn"
+                      >
+                        <span class="copyButtonIcons_eSgA" aria-hidden="true"
+                          ><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N">
+                            <path
+                              fill="currentColor"
+                              d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"
+                            ></path></svg
+                          ><svg
+                            viewBox="0 0 24 24"
+                            class="copyButtonSuccessIcon_LjdS"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"
+                            ></path></svg
+                        ></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <p>
+                  <strong><em>Deploy to AWS</em></strong>
+                </p>
+                <div
+                  class="codeBlockContainer_Ckt0 theme-code-block"
+                  style="
+                    --prism-color: #f8f8f2;
+                    --prism-background-color: #282a36;
+                  "
+                >
+                  <div class="codeBlockContent_biex">
+                    <pre
+                      tabindex="0"
+                      class="prism-code language-text codeBlock_bY9V thin-scrollbar"
+                      style="color: #f8f8f2; background-color: #282a36"
+                    ><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">$ telegraph deploy</span><br></span></code></pre>
+                    <div class="buttonGroup__atx">
+                      <button
+                        type="button"
+                        aria-label="Copy code to clipboard"
+                        title="Copy"
+                        class="clean-btn"
+                      >
+                        <span class="copyButtonIcons_eSgA" aria-hidden="true"
+                          ><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N">
+                            <path
+                              fill="currentColor"
+                              d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"
+                            ></path></svg
+                          ><svg
+                            viewBox="0 0 24 24"
+                            class="copyButtonSuccessIcon_LjdS"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"
+                            ></path></svg
+                        ></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <h3
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="step-2-integrate-frontend-sdk"
+                >
+                  Step 2: Integrate frontend SDK<a
+                    href="#step-2-integrate-frontend-sdk"
+                    class="hash-link"
+                    aria-label="Direct link to Step 2: Integrate frontend SDK"
+                    title="Direct link to Step 2: Integrate frontend SDK"
+                    >​</a
+                  >
+                </h3>
+                <div
+                  class="language-jsx codeBlockContainer_Ckt0 theme-code-block"
+                  style="
+                    --prism-color: #f8f8f2;
+                    --prism-background-color: #282a36;
+                  "
+                >
+                  <div class="codeBlockContent_biex">
+                    <pre
+                      tabindex="0"
+                      class="prism-code language-jsx codeBlock_bY9V thin-scrollbar"
+                      style="color: #f8f8f2; background-color: #282a36"
+                    ><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token keyword module" style="color:rgb(189, 147, 249);font-style:italic">import</span><span class="token plain"> </span><span class="token imports punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token imports"> </span><span class="token imports maybe-class-name">TelegraphInbox</span><span class="token imports"> </span><span class="token imports punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"> </span><span class="token keyword module" style="color:rgb(189, 147, 249);font-style:italic">from</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;@telegraph-notify/frontend-sdk&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token tag punctuation" style="color:rgb(248, 248, 242)">&lt;</span><span class="token tag class-name" style="color:rgb(255, 121, 198)">App</span><span class="token tag punctuation" style="color:rgb(248, 248, 242)">&gt;</span><span class="token plain-text"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain-text">  </span><span class="token tag punctuation" style="color:rgb(248, 248, 242)">&lt;</span><span class="token tag class-name" style="color:rgb(255, 121, 198)">TelegraphInbox</span><span class="token tag" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag" style="color:rgb(255, 121, 198)">    </span><span class="token tag attr-name" style="color:rgb(241, 250, 140)">user_id</span><span class="token tag script language-javascript script-punctuation punctuation" style="color:rgb(248, 248, 242)">=</span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token tag script language-javascript tag punctuation" style="color:rgb(248, 248, 242)">&lt;</span><span class="token tag script language-javascript tag class-name" style="color:rgb(255, 121, 198)">USER_ID</span><span class="token tag script language-javascript tag punctuation" style="color:rgb(248, 248, 242)">&gt;</span><span class="token tag script language-javascript plain-text" style="color:rgb(255, 121, 198)">}</span><span class="token tag" style="color:rgb(255, 121, 198)"> </span><span class="token tag comment" style="color:rgb(98, 114, 164)">// Unique identifier of the logged in user</span><span class="token tag" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag" style="color:rgb(255, 121, 198)">    </span><span class="token tag attr-name" style="color:rgb(241, 250, 140)">userHash</span><span class="token tag script language-javascript script-punctuation punctuation" style="color:rgb(248, 248, 242)">=</span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token tag script language-javascript tag punctuation" style="color:rgb(248, 248, 242)">&lt;</span><span class="token tag script language-javascript tag class-name" style="color:rgb(255, 121, 198)">USER_HMAC</span><span class="token tag script language-javascript tag punctuation" style="color:rgb(248, 248, 242)">&gt;</span><span class="token tag script language-javascript plain-text" style="color:rgb(255, 121, 198)">}</span><span class="token tag" style="color:rgb(255, 121, 198)"> </span><span class="token tag comment" style="color:rgb(98, 114, 164)">// Hashed user_id</span><span class="token tag" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag" style="color:rgb(255, 121, 198)">    </span><span class="token tag attr-name" style="color:rgb(241, 250, 140)">websocketUrl</span><span class="token tag script language-javascript script-punctuation punctuation" style="color:rgb(248, 248, 242)">=</span><span class="token tag script language-javascript punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token tag script language-javascript tag punctuation" style="color:rgb(248, 248, 242)">&lt;</span><span class="token tag script language-javascript tag class-name" style="color:rgb(255, 121, 198)">WEBSOCKET_GATEWAY_URL</span><span class="token tag script language-javascript tag punctuation" style="color:rgb(248, 248, 242)">&gt;</span><span class="token tag script language-javascript plain-text" style="color:rgb(255, 121, 198)">}</span><span class="token tag" style="color:rgb(255, 121, 198)"> </span><span class="token tag comment" style="color:rgb(98, 114, 164)">// WebSocket Gateway URL</span><span class="token tag" style="color:rgb(255, 121, 198)"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token tag" style="color:rgb(255, 121, 198)">  </span><span class="token tag punctuation" style="color:rgb(248, 248, 242)">/&gt;</span><span class="token plain-text"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain-text"></span><span class="token tag punctuation" style="color:rgb(248, 248, 242)">&lt;/</span><span class="token tag class-name" style="color:rgb(255, 121, 198)">App</span><span class="token tag punctuation" style="color:rgb(248, 248, 242)">&gt;</span><br></span></code></pre>
+                    <div class="buttonGroup__atx">
+                      <button
+                        type="button"
+                        aria-label="Copy code to clipboard"
+                        title="Copy"
+                        class="clean-btn"
+                      >
+                        <span class="copyButtonIcons_eSgA" aria-hidden="true"
+                          ><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N">
+                            <path
+                              fill="currentColor"
+                              d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"
+                            ></path></svg
+                          ><svg
+                            viewBox="0 0 24 24"
+                            class="copyButtonSuccessIcon_LjdS"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"
+                            ></path></svg
+                        ></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <h3
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="step-3-send-notifications-with-the-backend-sdk"
+                >
+                  Step 3: Send notifications with the backend SDK<a
+                    href="#step-3-send-notifications-with-the-backend-sdk"
+                    class="hash-link"
+                    aria-label="Direct link to Step 3: Send notifications with the backend SDK"
+                    title="Direct link to Step 3: Send notifications with the backend SDK"
+                    >​</a
+                  >
+                </h3>
+                <div
+                  class="language-typescript codeBlockContainer_Ckt0 theme-code-block"
+                  style="
+                    --prism-color: #f8f8f2;
+                    --prism-background-color: #282a36;
+                  "
+                >
+                  <div class="codeBlockContent_biex">
+                    <pre
+                      tabindex="0"
+                      class="prism-code language-typescript codeBlock_bY9V thin-scrollbar"
+                      style="color: #f8f8f2; background-color: #282a36"
+                    ><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">import</span><span class="token plain"> Telegraph </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">from</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;@telegraph-notify/backend-sdk&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token comment" style="color:rgb(98, 114, 164)">// Enter secret key and HTTP Gateway URL</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">const</span><span class="token plain"> telegraph </span><span class="token operator">=</span><span class="token plain"> </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">new</span><span class="token plain"> </span><span class="token class-name">Telegraph</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token plain">secretKey</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> httpGateway</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">telegraph</span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token function" style="color:rgb(80, 250, 123)">send</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  user_id</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  channels</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">   in_app</span><span class="token operator">?</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      message</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">   </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">   email</span><span class="token operator">?</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      subject</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      message</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">   </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">   slack</span><span class="token operator">?</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      message</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">   </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><br></span></code></pre>
+                    <div class="buttonGroup__atx">
+                      <button
+                        type="button"
+                        aria-label="Copy code to clipboard"
+                        title="Copy"
+                        class="clean-btn"
+                      >
+                        <span class="copyButtonIcons_eSgA" aria-hidden="true"
+                          ><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N">
+                            <path
+                              fill="currentColor"
+                              d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"
+                            ></path></svg
+                          ><svg
+                            viewBox="0 0 24 24"
+                            class="copyButtonSuccessIcon_LjdS"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"
+                            ></path></svg
+                        ></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <hr />
+                <h3 class="anchor anchorWithStickyNavbar_LWe7" id="demo">
+                  Demo<a
+                    href="#demo"
+                    class="hash-link"
+                    aria-label="Direct link to Demo"
+                    title="Direct link to Demo"
+                    >​</a
+                  >
+                </h3>
+                <p>Here is what all of that looks like in action.</p>
+                <figure class="image-container">
+                  <img
+                    src="/case-study/videos/demoapp.gif"
+                    class="diagram"
+                    alt="demoapp"
+                  />
+                </figure>
+                <hr />
+                <h3
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="architecture"
+                >
+                  Architecture<a
+                    href="#architecture"
+                    class="hash-link"
+                    aria-label="Direct link to Architecture"
+                    title="Direct link to Architecture"
+                    >​</a
+                  >
+                </h3>
+                <p>
+                  Telegraph has a serverless architecture on AWS and uses
+                  services like API Gateway, Lambda, and DynamoDB to implement
+                  its service with minimal operational overhead.
+                </p>
+                <figure class="image-container">
+                  <img
+                    src="/case-study/videos/architecture.gif"
+                    class="diagram"
+                    alt="Telegraph&#x27;s architecture"
+                    width="63%"
+                  />
+                  <figcaption align="center">
+                    Telegraph&#x27;s Architecture
+                  </figcaption>
+                </figure>
+                <hr />
+                <h2
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="engineering-challenges-and-decisions"
+                >
+                  Engineering Challenges and Decisions<a
+                    href="#engineering-challenges-and-decisions"
+                    class="hash-link"
+                    aria-label="Direct link to Engineering Challenges and Decisions"
+                    title="Direct link to Engineering Challenges and Decisions"
+                    >​</a
+                  >
+                </h2>
+                <h3
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="real-time-communication-with-clients"
+                >
+                  Real-time Communication with Clients<a
+                    href="#real-time-communication-with-clients"
+                    class="hash-link"
+                    aria-label="Direct link to Real-time Communication with Clients"
+                    title="Direct link to Real-time Communication with Clients"
+                    >​</a
+                  >
+                </h3>
+                <figure class="image-container">
+                  <img
+                    src="/case-study/images/architecture_ws_gateway.png"
+                    class="diagram"
+                    alt="architecture-websocket"
+                  />
+                </figure>
+                <p>
+                  One of the first decisions we had to make was how to send
+                  in-app notifications to the client. In the standard HTTP
+                  model, clients request data from servers as needed. In-app
+                  notifications, however, require real-time delivery, where the
+                  server pushes data to the client as events happen without
+                  waiting for a request.
+                </p>
+                <p>
+                  There are three primary mechanisms that can be used to achieve
+                  this: polling, Server-Sent Events (SSE), and WebSockets.
+                </p>
+                <h4 class="anchor anchorWithStickyNavbar_LWe7" id="polling">
+                  Polling<a
+                    href="#polling"
+                    class="hash-link"
+                    aria-label="Direct link to Polling"
+                    title="Direct link to Polling"
+                    >​</a
+                  >
+                </h4>
+                <figure class="image-container">
+                  <img
+                    src="/case-study/images/HTTP-Polling.png"
+                    class="diagram"
+                    alt="polling"
+                  />
+                </figure>
+                <p>
+                  Polling is a mechanism in which a client periodically sends
+                  HTTP requests to a server to check for new data. However,
+                  frequent polling can strain both the server and the network.
+                  While increasing the interval between requests can alleviate
+                  that strain, it reduces the application&#x27;s ability to
+                  deliver real-time updates. Additionally, as the user base
+                  grows, the number of unnecessary polling requests – those that
+                  return no new data – can result in a substantial waste of
+                  resources. Due to these inefficiencies, especially at scale,
+                  we opted not to use polling.
+                </p>
+                <h4
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="server-sent-events--websockets"
+                >
+                  Server-Sent Events &amp; WebSockets<a
+                    href="#server-sent-events--websockets"
+                    class="hash-link"
+                    aria-label="Direct link to Server-Sent Events &amp; WebSockets"
+                    title="Direct link to Server-Sent Events &amp; WebSockets"
+                    >​</a
+                  >
+                </h4>
+                <p>
+                  Both SSEs and WebSockets establish a persistent connection
+                  between client and server and allow data to be pushed
+                  on-demand from the server to the client.
+                </p>
+                <figure class="image-container">
+                  <img
+                    src="/case-study/images/SSE.png"
+                    class="diagram"
+                    alt="sse"
+                  />
+                </figure>
+                <p>
+                  SSEs establish a long-lived HTTP connection between the client
+                  and server, enabling the server to push updates to the client
+                  as they occur and only terminate when requested by either
+                  party. Compared with WebSockets, SSE is simpler to implement,
+                  as it relies solely on standard HTTP without requiring
+                  additional libraries or protocols. This simplicity makes it
+                  easy to set up and debug. Furthermore, SSE provides built-in
+                  features like automatic reconnection and message ordering.
+                </p>
+                <figure class="image-container">
+                  <img
+                    src="/case-study/images/WebSockets.png"
+                    class="diagram"
+                    alt="polling"
+                  />
+                </figure>
+                <p>
+                  WebSocket is a communication protocol that establishes a
+                  long-lived, bidirectional connection between a client and
+                  server over a single TCP connection. Following the initial
+                  HTTP handshake, the client sends an upgrade request that
+                  transitions the connection to the WebSocket protocol. This
+                  protocol establishes a dedicated channel for two-way real-time
+                  communication, making WebSocket particularly well-suited for
+                  interactive use cases, such as real-time chat applications or
+                  collaborative tools.
+                </p>
+                <h4
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="why-websockets"
+                >
+                  Why WebSockets?<a
+                    href="#why-websockets"
+                    class="hash-link"
+                    aria-label="Direct link to Why WebSockets?"
+                    title="Direct link to Why WebSockets?"
+                    >​</a
+                  >
+                </h4>
+                <p>
+                  We initially used SSEs to implement the sending of in-app
+                  notifications. The browser received these events from an
+                  Express backend server and then updated a user-facing frontend
+                  component to notify the user of this new event. This mechanism
+                  fulfilled our requirement to send in-app notifications in
+                  real-time. However, when we considered the scaling
+                  implications of using SSEs, and compared this with a
+                  serverless WebSocket architecture, we found WebSockets would
+                  serve Telegraph’s use case better in the long term,
+                  particularly when considering the availability of AWS API
+                  Gateway for WebSockets.
+                </p>
+                <figure class="image-container">
+                  <img
+                    src="/case-study/videos/ScalingEC2.gif"
+                    class="diagram"
+                    alt="scaling-instances"
+                  />
+                </figure>
+                <p>
+                  If we were to continue building Telegraph as a drop-in
+                  Notification as a Service using SSEs, we would have needed to
+                  set up an EC2 instance or similar compute resources. While
+                  this solution provides fine-grained control over scaling
+                  logic, connection management, and database infrastructure, we
+                  found it to lead to higher costs and complexity. For example,
+                  scaling an EC2-based setup would involve managing load
+                  balancers and provisioning distributed database systems or
+                  sharded architectures to handle the growth in notification
+                  data. These resources will incur costs even when idle. We
+                  estimated that in a hypothetical use case of delivering
+                  100,000 notifications for 2,000 users, the monthly cost of the
+                  serverless architecture was about 1/3 of that of using EC2
+                  instances.
+                </p>
+                <p>
+                  In addition to architectural components needing to scale up,
+                  as traffic drops and the number of connections reduces, they
+                  also need to scale down while maintaining the remaining
+                  connections. Although a single EC2 instance may be able to
+                  service all active SSE connections, we would not be able to
+                  consolidate the scattered connections without disconnecting
+                  them first. This would result in multiple EC2 instances
+                  running in underutilized states.
+                </p>
+                <figure class="image-container">
+                  <img
+                    src="/case-study/videos/ScalingWS.gif"
+                    class="diagram"
+                    alt="scaling-websockets"
+                  />
+                </figure>
+                <p>
+                  In contrast, AWS’s API Gateway Websocket API automatically
+                  handles scaling and connection persistence. The API Gateway
+                  and the attached lambdas scale up and down with demand,
+                  ensuring no redundant resources are left running that would
+                  drive up costs. This built-in scaling behavior of the API
+                  Gateway allowed us to focus on building the core functionality
+                  of Telegraph while minimizing the operational burden of
+                  managing infrastructure, making WebSockets the better choice
+                  for our notification system.
+                </p>
+                <hr />
+                <h3
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="persistent-data-storage"
+                >
+                  Persistent Data Storage<a
+                    href="#persistent-data-storage"
+                    class="hash-link"
+                    aria-label="Direct link to Persistent Data Storage"
+                    title="Direct link to Persistent Data Storage"
+                    >​</a
+                  >
+                </h3>
+                <figure class="image-container">
+                  <img
+                    src="/case-study/images/architecture_databases.png"
+                    class="diagram"
+                    alt="websockets"
+                  />
+                </figure>
+                <h4
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="storage-for-high-reads-and-writes"
+                >
+                  Storage for high reads and writes<a
+                    href="#storage-for-high-reads-and-writes"
+                    class="hash-link"
+                    aria-label="Direct link to Storage for high reads and writes"
+                    title="Direct link to Storage for high reads and writes"
+                    >​</a
+                  >
+                </h4>
+                <p>
+                  Our data for WebSocket connection IDs, user preferences and
+                  attributes, and in-app notifications has a fixed and
+                  consistent structure. It also does not require complex
+                  relational queries, primarily involving simple look-ups based
+                  on user ID. However, the nature of our workflow meant that the
+                  database solution needed to handle a high frequency of both
+                  reads and writes.
+                </p>
+                <p>
+                  By this point, we had already committed to using the WebSocket
+                  API Gateway, which influenced the rest of our architecture. As
+                  a result, we considered database services offered by AWS that
+                  could integrate with our serverless infrastructure. Although
+                  we could potentially use either NoSQL or SQL databases since
+                  our data is structured, we ultimately chose a NoSQL database,
+                  specifically DynamoDB, due to its ability to scale
+                  horizontally and handle high read and write throughput.
+                </p>
+                <h4
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="storage-for-high-writes-and-large-volume"
+                >
+                  Storage for high writes and large volume<a
+                    href="#storage-for-high-writes-and-large-volume"
+                    class="hash-link"
+                    aria-label="Direct link to Storage for high writes and large volume"
+                    title="Direct link to Storage for high writes and large volume"
+                    >​</a
+                  >
+                </h4>
+                <p>
+                  Another type of storage solution we needed to consider was for
+                  the tracing logs of notification requests. This storage
+                  solution would need to handle a high volume of writes and
+                  store a large number of small files.
+                </p>
+                <p>
+                  Initially, when considering storage for logs, Amazon’s S3
+                  bucket seemed like the best choice. S3 is a scalable object
+                  storage solution known for being particularly cost-effective
+                  for storing large amounts of data. However, after
+                  implementation, we quickly found that the number of reads to
+                  the S3 Bucket would be significant and, with about a 10x
+                  difference in read costs compared to DynamoDB, it could
+                  quickly become an expensive solution. We also found the query
+                  time of S3 to be a significant concern for our use case, as
+                  retrieving 20 objects, each about 30 bytes, resulted in a
+                  timeout due to Lambda&#x27;s default 3-second execution limit.
+                </p>
+                <p>
+                  Given that we needed to query the logs database for viewing
+                  and error handling on the dashboard, the lag in retrievals and
+                  the cost difference for reads outweighed the cheap storage
+                  benefits of S3. As a result, we opted to use DynamoDB for our
+                  notification logs.
+                </p>
+                <p>
+                  Once our data was stored away, it was time to keep it safe.
+                </p>
+                <hr />
+                <h3
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="authentication"
+                >
+                  Authentication<a
+                    href="#authentication"
+                    class="hash-link"
+                    aria-label="Direct link to Authentication"
+                    title="Direct link to Authentication"
+                    >​</a
+                  >
+                </h3>
+                <figure class="image-container">
+                  <img
+                    src="/case-study/images/architecture_authorizers.png"
+                    class="diagram"
+                    alt="authorizors"
+                  />
+                </figure>
+                <p>
+                  Telegraph uses two authentication methods: key-based
+                  authentication for server-side connections and Hash-Based
+                  Message Authentication Codes (HMAC) for client-side
+                  connections.
+                </p>
+                <h4
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="key-based-authentication"
+                >
+                  Key-based Authentication<a
+                    href="#key-based-authentication"
+                    class="hash-link"
+                    aria-label="Direct link to Key-based Authentication"
+                    title="Direct link to Key-based Authentication"
+                    >​</a
+                  >
+                </h4>
+                <figure class="image-container">
+                  <img
+                    src="/case-study/videos/Key-Based-Authentication.gif"
+                    class="diagram"
+                    alt="key based authentication"
+                  />
+                </figure>
+                <p>
+                  Telegraph uses key-based authentication for API requests.
+                  During setup, users generate a secret key, which is included
+                  in the <code>Authorization</code> header of each request and
+                  then verified by the HTTP Gateway authorizer.
+                </p>
+                <h4
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="hash-based-authentication"
+                >
+                  Hash-based Authentication<a
+                    href="#hash-based-authentication"
+                    class="hash-link"
+                    aria-label="Direct link to Hash-based Authentication"
+                    title="Direct link to Hash-based Authentication"
+                    >​</a
+                  >
+                </h4>
+                <figure class="image-container">
+                  <img
+                    src="/case-study/videos/HMAC-Authentication.gif"
+                    class="diagram"
+                    alt="key based authentication"
+                  />
+                </figure>
+                <p>
+                  Authenticating a client between two servers with a shared
+                  secret key is more challenging, since the credentials in the
+                  Authorization header are visible to the client. If the secret
+                  key is intercepted by a third party, they gain access to all
+                  Telegraph API functions.
+                </p>
+                <p>
+                  Our solution uses hash-based message authentication codes
+                  (HMAC) <a href="#references">[3]</a> to authenticate clients
+                  connecting to the WebSocket Gateway. The application server
+                  generates a unique hash for each client by combining the
+                  secret key and user ID using SHA256. When connecting to the
+                  WebSocket Gateway, the user ID and hash are passed to the
+                  WebSocket authorizer, which verifies it using the same
+                  algorithm as the application server.
+                </p>
+                <p>
+                  You might be wondering why we didn’t use JWTs or OAuth. After
+                  all, they’re widely adopted across the industry for
+                  authentication. The choice came down to what Telegraph is
+                  optimized for. HMAC avoids the need for additional
+                  infrastructure like token servers or complex validation
+                  workflows. You only have to manage a shared secret key.
+                </p>
+                <p>
+                  JWTs and OAuth are powerful tools, but they’re designed for
+                  different needs. JWTs are great in distributed systems where
+                  multiple services need to independently validate tokens
+                  without checking back with a central server. That flexibility
+                  is great if you need it, but it adds unnecessary complexity
+                  for Telegraph’s needs. OAuth, on the other hand, is great for
+                  scenarios involving delegated access, like when users need to
+                  log in through a third-party provider. However, we designed
+                  Telegraph to be a single-tenant, self-hosted environment where
+                  your server already authenticates clients before Telegraph
+                  comes into the picture.
+                </p>
+                <p>
+                  That said, we did recognize that the secret key used in the
+                  HMAC process doesn’t have a native expiration or rotation
+                  mechanism. We added a way for you to change the secret key
+                  whenever needed through the CLI – whether it’s in response to
+                  a security breach or simply because the key has been in use
+                  for a while and you want to rotate it out.
+                </p>
+                <hr />
+                <h3
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="observability"
+                >
+                  Observability<a
+                    href="#observability"
+                    class="hash-link"
+                    aria-label="Direct link to Observability"
+                    title="Direct link to Observability"
+                    >​</a
+                  >
+                </h3>
+                <p>
+                  An integral part of our system is giving developers visibility
+                  into whether notifications are being delivered successfully
+                  and providing a way to debug failures when they happen.
+                  Telegraph enables detailed logging across all Lambda functions
+                  and gateways using AWS CloudWatch. Though thorough, the sheer
+                  volume of logs generated can make diagnosing issues with
+                  CloudWatch logs alone difficult.
+                </p>
+                <p>
+                  Our dashboard is meant to act as a bridge between visualizing
+                  your Telegraph instance and diagnosing problems using
+                  CloudWatch logs. It provides a quicker, more user-friendly way
+                  to interpret metrics, logs, and failed messages. Developers
+                  can use the notification logs generated for a notification
+                  request to narrow their search of CloudWatch logs and resolve
+                  problems faster.
+                </p>
+                <figure class="image-container">
+                  <img
+                    src="/case-study/videos/dashboard.gif"
+                    class="diagram"
+                    alt="dashboard"
+                  />
+                </figure>
+                <hr />
+                <h3
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="traffic-spikes"
+                >
+                  Traffic Spikes<a
+                    href="#traffic-spikes"
+                    class="hash-link"
+                    aria-label="Direct link to Traffic Spikes"
+                    title="Direct link to Traffic Spikes"
+                    >​</a
+                  >
+                </h3>
+                <figure class="image-container">
+                  <img
+                    src="/case-study/images/architecture_queue.png"
+                    class="diagram"
+                    alt="architecture-queue"
+                  />
+                </figure>
+                <p>
+                  Handling traffic spikes is one of the tricky parts of building
+                  a notification system. Even though AWS Lambda scales
+                  automatically, there are concurrency limits, and DynamoDB,
+                  while it auto-scales, has its own read and write rate limits.
+                  We wanted to make sure Telegraph could handle sudden surges in
+                  traffic without hitting those limits and causing issues. To
+                  manage this, we added a queue to rate limit the traffic
+                  flowing through the system.
+                </p>
+                <p>
+                  AWS offers two types of queues: FIFO and Standard
+                  <a href="#references">[4]</a>. A FIFO queue, as the name
+                  suggests, processes messages in the exact order they are
+                  received. This seemed like a nice feature, but it was not
+                  strictly necessary for our use case. The downside of a FIFO
+                  queue is that it has a throughput limit of 300 requests per
+                  second. Also, to preserve the ordering of the messages, if
+                  there is an error processing a batch, all unprocessed messages
+                  have to go back to the queue. Since the queue uses the number
+                  of times a message appears in the queue as its criteria for
+                  sending that message to the dead letter queue (DLQ), this
+                  meant that it was possible for a message to be sent to the DLQ
+                  without ever being attempted to be processed.
+                </p>
+                <p>
+                  A Standard queue forgoes enforcing FIFO behavior and is
+                  instead optimized for high message throughput, which Amazon
+                  states is unlimited. Without the strict first-in-first-out
+                  ordering rules, this meant we could process a batch of
+                  messages returning only the failed messages to the queue and
+                  eliminate the risk of a valid message being inadvertently sent
+                  to the DLQ. With these cumulative benefits, we decided to
+                  choose the Standard queue.
+                </p>
+                <p>
+                  To then use the queue as a rate limiter in our system, we
+                  configured the Lambda consuming from it. The Lambda takes up
+                  to 100 messages from the queue with a concurrency limit of 10,
+                  creating a ceiling on the number of notification requests that
+                  are processed at a given time. Buffering requests and
+                  processing them asynchronously allows us to keep downstream
+                  components from being overloaded during spikes in traffic.
+                </p>
+                <hr />
+                <h2
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="load-testing"
+                >
+                  Load Testing<a
+                    href="#load-testing"
+                    class="hash-link"
+                    aria-label="Direct link to Load Testing"
+                    title="Direct link to Load Testing"
+                    >​</a
+                  >
+                </h2>
+                <p>
+                  To ensure that Telegraph could handle high traffic scenarios
+                  and scale effectively, we conducted load testing on the key
+                  entry points of the application: the WebSocket Gateway and the
+                  HTTP Gateway. The objective of the testing was to evaluate our
+                  capacity under heavy loads, focusing on whether the connection
+                  requests would be successfully passed on to the integrated
+                  lambdas. We simulated a high volume of simultaneous users and
+                  interactions using <code>artillery.io</code> and a high
+                  capacity EC2 instance (32 vCPU, 128 GiB memory).
+                </p>
+                <h3
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="websocket-gateway"
+                >
+                  WebSocket Gateway<a
+                    href="#websocket-gateway"
+                    class="hash-link"
+                    aria-label="Direct link to WebSocket Gateway"
+                    title="Direct link to WebSocket Gateway"
+                    >​</a
+                  >
+                </h3>
+                <p>
+                  The WebSocket Gateway was tested to evaluate how it handles a
+                  high volume of connections. We started with a low connection
+                  rate to establish a baseline and gradually increased the load.
+                  Throughout the tests, latency remained consistent, and we
+                  didn’t encounter any errors. This confirmed that the WebSocket
+                  Gateway can handle up to 500 new connections per second,
+                  aligning with AWS&#x27;s specifications.
+                  <a href="#references">[1]</a>
+                </p>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Metric</th>
+                      <th>Test 1</th>
+                      <th>Test 2</th>
+                      <th>Test 3</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Test Duration</td>
+                      <td>20</td>
+                      <td>20</td>
+                      <td>600</td>
+                    </tr>
+                    <tr>
+                      <td>Maximum connections per second</td>
+                      <td>10</td>
+                      <td>200</td>
+                      <td>500</td>
+                    </tr>
+                    <tr>
+                      <td>Total Connections</td>
+                      <td>200</td>
+                      <td>1239</td>
+                      <td>291126</td>
+                    </tr>
+                    <tr>
+                      <td>Latency (ms)</td>
+                      <td>38</td>
+                      <td>26</td>
+                      <td>21</td>
+                    </tr>
+                    <tr>
+                      <td>Errors</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h3
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="http-gateway"
+                >
+                  HTTP Gateway<a
+                    href="#http-gateway"
+                    class="hash-link"
+                    aria-label="Direct link to HTTP Gateway"
+                    title="Direct link to HTTP Gateway"
+                    >​</a
+                  >
+                </h3>
+                <p>
+                  For the HTTP Gateway, the focus was on API request handling.
+                  At light and moderate request rates, the system was able to
+                  process all requests. However, at a heavy load of 8,000
+                  requests per second, we hit the AWS Lambda&#x27;s regional
+                  concurrency limit of 1,000 <a href="#references">[2]</a>. This
+                  caused about 1.6% of requests to be throttled, as there
+                  weren’t enough Lambdas available to process them. Despite
+                  this, the requests that were processed maintained stable
+                  latency, and no errors occurred.
+                </p>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Metric</th>
+                      <th>Test 1</th>
+                      <th>Test 2</th>
+                      <th>Test 3</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Test Duration (seconds)</td>
+                      <td>30</td>
+                      <td>60</td>
+                      <td>60</td>
+                    </tr>
+                    <tr>
+                      <td>API Requests per second</td>
+                      <td>5</td>
+                      <td>100</td>
+                      <td>8000</td>
+                    </tr>
+                    <tr>
+                      <td>Total Requests Made</td>
+                      <td>150</td>
+                      <td>6000</td>
+                      <td>480000</td>
+                    </tr>
+                    <tr>
+                      <td>Throttled Requests</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>7854</td>
+                    </tr>
+                    <tr>
+                      <td>Latency (ms)</td>
+                      <td>156</td>
+                      <td>44</td>
+                      <td>78</td>
+                    </tr>
+                    <tr>
+                      <td>Errors</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h3 class="anchor anchorWithStickyNavbar_LWe7" id="bottlenecks">
+                  Bottlenecks<a
+                    href="#bottlenecks"
+                    class="hash-link"
+                    aria-label="Direct link to Bottlenecks"
+                    title="Direct link to Bottlenecks"
+                    >​</a
+                  >
+                </h3>
+                <p>
+                  The main performance bottleneck for Telegraph was the Lambda
+                  concurrency limit. While components like API Gateway and
+                  DynamoDB scaled well during load tests, Lambda’s default
+                  concurrency cap of 1,000 executions per region imposed by AWS
+                  became a limiting factor. This limit wasn’t reached during the
+                  WebSocket Gateway tests, but when the HTTP Gateway test ramped
+                  up to 8,000 requests per second, throttling began as all 1,000
+                  Lambdas were already in use.
+                </p>
+                <h3 class="anchor anchorWithStickyNavbar_LWe7" id="capacity">
+                  Capacity<a
+                    href="#capacity"
+                    class="hash-link"
+                    aria-label="Direct link to Capacity"
+                    title="Direct link to Capacity"
+                    >​</a
+                  >
+                </h3>
+                <p>
+                  Based on our results, we estimate that this bottleneck can be
+                  avoided if WebSocket connections are kept under 500 per second
+                  and API requests stay below 5,000 per second. These limits
+                  align well with our target use case of serving small to
+                  medium-sized applications. Moreover, AWS’s flexible
+                  concurrency limits offer an additional buffer, allowing
+                  Telegraph to scale even further if needed.
+                </p>
+                <hr />
+                <h2 class="anchor anchorWithStickyNavbar_LWe7" id="future-work">
+                  Future Work<a
+                    href="#future-work"
+                    class="hash-link"
+                    aria-label="Direct link to Future Work"
+                    title="Direct link to Future Work"
+                    >​</a
+                  >
+                </h2>
+                <h4
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="automated-key-rotation-for-hmac-authentication"
+                >
+                  Automated Key Rotation for HMAC Authentication<a
+                    href="#automated-key-rotation-for-hmac-authentication"
+                    class="hash-link"
+                    aria-label="Direct link to Automated Key Rotation for HMAC Authentication"
+                    title="Direct link to Automated Key Rotation for HMAC Authentication"
+                    >​</a
+                  >
+                </h4>
+                <p>
+                  Our HMAC-based authentication approach, while robust,
+                  currently has two notable limitations: the lack of expiration
+                  and the absence of automated secret key rotation. Automating
+                  secret key rotation using a secure key management system like
+                  AWS Key Management Service would mitigate risks by
+                  periodically updating keys.
+                </p>
+                <h4
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="stage-specific-metrics"
+                >
+                  Stage-Specific Metrics<a
+                    href="#stage-specific-metrics"
+                    class="hash-link"
+                    aria-label="Direct link to Stage-Specific Metrics"
+                    title="Direct link to Stage-Specific Metrics"
+                    >​</a
+                  >
+                </h4>
+                <p>
+                  To improve the observability metrics of our dashboard, we
+                  could enhance its granularity by providing detailed insights
+                  into each stage of the notification delivery pipeline.
+                  Currently, the dashboard displays notification logs, their
+                  status, and timestamps, but it lacks visibility into where
+                  failures occur within the process. By incorporating
+                  stage-specific metrics, such as whether the notification
+                  failed during API processing, message queueing, or client
+                  delivery, we can offer a more precise diagnosis for failures.
+                  Additionally, integrating visualizations like success/failure
+                  rates, retry attempts, and latency distributions across stages
+                  would enable users to understand performance bottlenecks
+                  better and identify trends. These improvements would enable
+                  users to troubleshoot issues more effectively and optimize
+                  their notification workflows.
+                </p>
+                <h4
+                  class="anchor anchorWithStickyNavbar_LWe7"
+                  id="automating-retry-logic-for-failed-deliveries"
+                >
+                  Automating Retry Logic for Failed Deliveries<a
+                    href="#automating-retry-logic-for-failed-deliveries"
+                    class="hash-link"
+                    aria-label="Direct link to Automating Retry Logic for Failed Deliveries"
+                    title="Direct link to Automating Retry Logic for Failed Deliveries"
+                    >​</a
+                  >
+                </h4>
+                <p>
+                  Currently, the system lacks built-in retry logic for failed
+                  notification deliveries. While failed deliveries are logged
+                  and displayed on the dashboard, any reattempt to send these
+                  notifications must be done manually. Introducing automated
+                  retry logic to attempt delivery two or three times before
+                  marking a notification as failed could reduce the likelihood
+                  of prematurely abandoning notifications.
+                </p>
+                <hr />
+                <h2 class="anchor anchorWithStickyNavbar_LWe7" id="footnotes">
+                  Footnotes<a
+                    href="#footnotes"
+                    class="hash-link"
+                    aria-label="Direct link to Footnotes"
+                    title="Direct link to Footnotes"
+                    >​</a
+                  >
+                </h2>
+                <ol>
+                  <li>
+                    Under typical AWS usage scenarios, delivering 10,000
+                    notifications with Telegraph incurs an estimated monthly
+                    cost of $14
+                  </li>
+                </ol>
+                <hr />
+                <h2 class="anchor anchorWithStickyNavbar_LWe7" id="references">
+                  References<a
+                    href="#references"
+                    class="hash-link"
+                    aria-label="Direct link to References"
+                    title="Direct link to References"
+                    >​</a
+                  >
+                </h2>
+                <ol>
+                  <li>
+                    <a
+                      href="https://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >https://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-concurrency.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >https://docs.aws.amazon.com/lambda/latest/dg/lambda-concurrency.html</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://en.wikipedia.org/wiki/HMAC"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >https://en.wikipedia.org/wiki/HMAC</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://aws.amazon.com/sqs"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >https://aws.amazon.com/sqs</a
+                    >
+                  </li>
+                </ol>
+              </article>
+            </div>
+          </div>
+        </main>
+      </div>
+      <footer class="footer footer--dark">
+        <div class="container container-fluid">
+          <div class="row footer__links">
+            <div class="col footer__col">
+              <div class="footer__title">Docs</div>
+              <ul class="footer__items clean-list">
+                <li class="footer__item">
+                  <a class="footer__link-item" href="/case-study">Case Study</a>
+                </li>
+                <li class="footer__item">
+                  <a class="footer__link-item" href="/team">Team</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col footer__col">
+              <div class="footer__title">More</div>
+              <ul class="footer__items clean-list">
+                <li class="footer__item">
+                  <a
+                    href="https://github.com/telegraph-notify"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer__link-item"
+                    >GitHub<svg
+                      width="13.5"
+                      height="13.5"
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      class="iconExternalLink_nPIU"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"
+                      ></path></svg
+                  ></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer__bottom text--center">
+            <div class="footer__copyright">Copyright © 2025 Telegraph</div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
 </html>
