@@ -69,7 +69,7 @@ Telegraph is deployed to AWS via a CLI available as an npm package. Once deploye
 Telegraph has a serverless architecture on AWS and uses services like API Gateway, Lambda, and DynamoDB to implement its service with minimal operational overhead.
 
 <figure className="image-container">
-   <img src="/case-study/images/Architecture900.png" className="diagram" alt="Telegraph's architecture" width="63%"/>
+   <img src="/case-study/videos/architecture.gif" className="diagram" alt="Telegraph's architecture" width="63%"/>
    <figcaption align="center">Telegraph's Architecture</figcaption>
 </figure>
 
