@@ -8,6 +8,8 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
     "../docs/**/*.mdx",
     "!../docs/node_modules",
+    "./node_modules/flowbite-react/**/*.js",
+    "./node_modules/flowbite/**/*.js",
   ],
   darkMode: ["class", '[data-theme="dark"]'],
   theme: {
@@ -36,7 +38,7 @@ module.exports = {
       },
     },
   },
-  plugins: [require("autoprefixer")],
+  plugins: [require("autoprefixer"), require("flowbite/plugin")],
   autoprefixer: {
     browsers: ["last 2 versions", "safari >= 7", "ie >= 10"],
   },

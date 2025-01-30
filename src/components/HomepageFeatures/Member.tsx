@@ -19,7 +19,7 @@ function Member({
 }: MemberProps) {
   return (
     <div className="portrait-card flex flex-col">
-      <div className="">
+      <div className="flex justify-center">
         <img className="portrait-img max-h-64" src={image} />
       </div>
       <p className="lp-name p-override mb-0 mt-2 pb-4 text-left text-center text-lg font-semibold text-gray-800 dark:text-gray-300 md:pb-0">
